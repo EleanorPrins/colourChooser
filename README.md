@@ -1,6 +1,6 @@
 # ColourChooser
 
-A simple colour chooser discord bot. Works by taking user-provided hex codes and created a role based on their user id, with the colour of the role being the hex code provided.
+A simple colour chooser discord bot. Works by taking user-provided hex codes and creates a role based on their user id, with the colour of the role being the hex code provided.
 
 ## Warning
 
