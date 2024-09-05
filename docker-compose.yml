@@ -1,0 +1,10 @@
+# Compose file to run standalone python application
+
+name: colourChooser
+
+services:
+  colourchooser:
+    container_name: colourchooser
+    image: joyte/colourchooser:latest
+
+  restart: always
