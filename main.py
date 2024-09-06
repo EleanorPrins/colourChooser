@@ -29,15 +29,15 @@ async def setcolour(interaction: discord.Interaction, hex: str):
         )
         return
 
-    if hex.startswith("#"):
-        hex = hex[1:]
-
-    if not re.match(r"^#?([a-f0-9]{6}|[a-f0-9]{3})$", hex):
+    if not re.match(r"^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$", hex):
         await interaction.response.send_message(
             "Invalid hex code! Please use a valid 3 or 6 digit hex code.",
             ephemeral=True,
         )
         return
+
+    if hex.startswith("#"):
+        hex = hex[1:]
 
     # check if interaction.user.roles contains a role with the name of the user
     role = discord.utils.get(interaction.guild.roles, name=str(interaction.user.id))
