@@ -13,14 +13,13 @@ tree = app_commands.CommandTree(client)
 
 @client.event
 async def on_ready():
-    await tree.sync(guild=discord.Object(id=1230330683046494208))
+    await tree.sync()
     print(f"Logged in as {client.user}")
 
 
 @tree.command(
     name="setcolour",
     description="Set your colour",
-    guild=discord.Object(id=1230330683046494208),
 )
 @app_commands.describe(hex="The color to set yourself as")
 async def setcolour(interaction: discord.Interaction, hex: str):
@@ -66,7 +65,6 @@ async def setcolour(interaction: discord.Interaction, hex: str):
 @tree.command(
     name="getcolour",
     description="Get your (or another user's) colour",
-    guild=discord.Object(id=1230330683046494208),
 )
 @app_commands.describe(user="The user to get the colour of")
 async def getcolour(
@@ -105,7 +103,6 @@ async def getcolour(
 @tree.command(
     name="clearcolour",
     description="Clear your colour",
-    guild=discord.Object(id=1230330683046494208),
 )
 async def clearcolour(interaction: discord.Interaction):
     if not interaction.guild:
@@ -129,7 +126,6 @@ async def clearcolour(interaction: discord.Interaction):
 @tree.command(
     name="colourhelp",
     description="Get help with the bot",
-    guild=discord.Object(id=1230330683046494208),
 )
 async def hexhelp(interaction: discord.Interaction):
 
