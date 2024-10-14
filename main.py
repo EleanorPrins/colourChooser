@@ -63,6 +63,37 @@ async def setcolour(interaction: discord.Interaction, hex: str):
 
 
 @tree.command(
+    name="showcolour",
+    description="Show what a colour looks like",
+)
+@app_commands.describe(hex="The color to show")
+async def showcolour(interaction: discord.Interaction, hex: str):
+    if not re.match(r"^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$", hex):
+        await interaction.response.send_message(
+            "Invalid hex code! Please use a valid 3 or 6 digit hex code.",
+            ephemeral=True,
+        )
+        return
+
+    if hex.startswith("#"):
+        hex = hex[1:]
+
+    if hex[0] != "#":
+        hex = f"#{hex}"
+
+    # Create an embed with the colour as an image, as well as the highlight of the embed
+    embed = discord.Embed(
+        title=f"Colour: {hex}",
+        color=discord.Colour(int(hex, 16)),
+    )
+    embed.set_image(
+        url=f"https://dummyimage.com/200x200/{hex}/{hex}&text=+"  # Create a 200x200 image with the colour
+    )
+
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+
+@tree.command(
     name="getcolour",
     description="Get your (or another user's) colour",
 )
