@@ -78,13 +78,10 @@ async def showcolour(interaction: discord.Interaction, hex: str):
     if hex.startswith("#"):
         hex = hex[1:]
 
-    if hex[0] != "#":
-        hex = f"#{hex}"
-
     # Create an embed with the colour as an image, as well as the highlight of the embed
     embed = discord.Embed(
-        title=f"Colour: {hex}",
-        color=discord.Colour(int(hex[1:], 16)),
+        title=f"Colour: #{hex}",
+        color=discord.Colour(int(hex, 16)),
     )
     embed.set_image(
         url=f"https://dummyimage.com/200x200/{hex}/{hex}&text=+"  # Create a 200x200 image with the colour
