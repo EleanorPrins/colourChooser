@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 python:3.12 AS build
+FROM python:3.12 AS build
 
 # Set the working directory
 
