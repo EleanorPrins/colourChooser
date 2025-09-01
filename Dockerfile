@@ -1,4 +1,4 @@
-FROM python:3.12 AS build
+FROM python:latest
 
 # Set the working directory
 
